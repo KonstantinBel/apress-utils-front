@@ -1,0 +1,22 @@
+{
+  "name": "apress-utils-front",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KonstantinBel/apress-utils-front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KonstantinBel/apress-utils-front/issues"
+  },
+  "homepage": "https://github.com/KonstantinBel/apress-utils-front#readme",
+  "dependencies": {
+    "handlebars": "^4.1.2",
+    "handlebars-loader": "^1.7.1"
+  }
+}

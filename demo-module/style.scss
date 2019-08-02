@@ -1,0 +1,20 @@
+.demo-module-popup {
+  position: fixed;
+  top: 150px;
+  left: 500px;
+  width: 250px;
+  height: 150px;
+  background: red;
+  color: white;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.demo-module-popup__title {
+  text-align: center;
+}
+
+.demo-module-popup__text {
+  margin-top: 25px;
+  font-size: 20px;
+}
