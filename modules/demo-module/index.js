@@ -5,7 +5,7 @@
 import './style.scss';
 
 import tmpl from './tmpl1.handlebars';
-import i18n from '../locales';
+import i18n from '../../locales';
 
 
 
