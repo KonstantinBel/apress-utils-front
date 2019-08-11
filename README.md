@@ -9,43 +9,52 @@
 
 ## Использование
 
-В проекте или геме установить npm пакет
+Устанавливаем npm пакет:
 ```
-npm i apress-utils-front
+dip yarn add apress-utils-front //в проекте
+npm i apress-utils-front //в геме
 ```
 
 **Подключить модуль можно двумя способами:**
-1. В существующий скрипт импортировать нужный модуль и использовать классы/функции/объекты предоставляемые модулем
+1. В существующий скрипт импортировать нужный модуль и использовать классы/функции/объекты предоставляемые модулем:
 ```
-import { demoModule } from 'apress-utils-front/demo-module';
+import { demoModule } from 'apress-utils-front/modules/demo-module';
 demoModule();
 ```
-2. Подключить модуль в пакедж как же как обычные проектные модули
+2. Подключить модуль в пакедж как же как обычные проектные модули:
 *применимо для модулей вида app.modules.moduleName = (() => {})()*
 ```
-import 'apress-utils-front/demo-module'
+import 'apress-utils-front/modules/demo-module'
 ```
 
 ## Разработак
 
-Для начало нужно установить инструмент для локального подключения npm пакетов ```nmp i yalc -g```
+Клонируем репозиторий в папку gems
 
-*Начальное подключение:*
-1. В папке apress-utils-front публикуем пакет локально ```yalc publish```
-2. В папке проекта/гема подключаем пакет ```yalc add apress-utils-front```
-3. Пересобираем npm пакеты ```dip yarn install```
-
-*После изменений в модуле:*
-1. В папке apress-utils-front публикуем пакет локально ```yalc publish```
-2. В папке проекта/гема подключаем пакет ```yalc update```
-3. Пересобираем npm пакеты ```dip yarn install```
-
-*Обновление можно сократить до одной команды, например:*
+#### В проекте
+1. В файле `package.local.json` меняем версию `apress-utils-front` на `file:/localgems/apress-utils-front`
 ```
-(cd ../apress-utils-front/ && yalc publish) && yalc update && dip yarn install
+"apress-utils-front": "file:/localgems/apress-utils-front"
+```
+2. В корне проекта выполняем команду
+```
+dip package.json:compile && dip yarn install && dip yarn run linklocal
 ```
 
-После внесения изменений и отправки ПР не забываем отключить локальный пакет ```yalc remove apress-utils-front```
+#### В геме
+
+*Должен быть установлен пакет `linklocal` и в файле `package.json` в секции `scripts` прописано `"linklocal": "linklocal"`*
+
+1. В файле `package.json` меняем версию `apress-utils-front` на `file:../../apress-utils-front`
+```
+"apress-utils-front": "file:../../apress-utils-front"
+```
+2. В папке frontend запускаем
+```
+npm i && npm run linklocal
+```
+
+
 
 ***Важно! При создании нового модуля нужно добавить файл `README.md` с описанием модуля и примерами использования.Так же нужно добавить ссылку на модуль в `modules-list/README.md`***
 
@@ -54,7 +63,12 @@ import 'apress-utils-front/demo-module'
 Подключаемся к приватному registry ```sudo npm adduser --registry https://registry.railsc.ru```
 
 1. Вносим изменения
-2. Обновляем версию в ```package.json```
+2. Обновляем версию в ```package.json``` (используем [эти правила](https://github.com/abak-press/apress-ui#%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5))
 3. Отправляем ПР, ждем мержа
 4. Когда все смержено публикуем новую версию пакета ```sudo npm publish```
-5. Обновляем модуль в проекте
+5. Обновляем версию модуля в проекте/геме
+6. Запускаем:
+```
+dip yarn add apress-utils-front //в проекте
+npm i apress-utils-front //в геме
+```
